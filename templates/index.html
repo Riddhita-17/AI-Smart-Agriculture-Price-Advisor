@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+    content="width=device-width, initial-scale=1.0">
+
+    <title>AI Smart Agriculture Price Advisor</title>
+
+    <link rel="stylesheet"
+    href="{{ url_for('static', filename='style.css') }}">
+
+</head>
+
+<body>
+
+<div class="container">
+
+    <h1>🌾 AI Smart Agriculture Price Advisor</h1>
+
+    <p class="subtitle">
+
+        Protect Farmers from Unfair Pricing
+
+    </p>
+
+    <form action="/predict" method="POST">
+
+        <input type="text"
+        name="commodity"
+        placeholder="Enter Crop Name (Wheat, Rice...)"
+        required>
+
+        <input type="text"
+        name="state"
+        placeholder="Enter State"
+        required>
+
+        <input type="text"
+        name="market"
+        placeholder="Enter Market"
+        required>
+
+        <input type="number"
+        name="year"
+        placeholder="Enter Year"
+        required>
+
+        <input type="number"
+        name="month"
+        placeholder="Enter Month"
+        required>
+
+        <input type="number"
+        name="offered_price"
+        placeholder="Trader Offered Price"
+        required>
+
+        <button type="submit">
+
+            Predict Market Price
+
+        </button>
+
+    </form>
+
+    {% if prediction %}
+
+    <div class="result">
+
+        <h2>
+
+            📈 Predicted Market Price:
+            ₹ {{ prediction }}
+
+        </h2>
+
+        <h3>
+
+            💰 Trader Offered:
+            ₹ {{ offered_price }}
+
+        </h3>
+
+        <h2 class="message">
+
+            {{ message }}
+
+        </h2>
+
+    </div>
+
+    {% endif %}
+
+</div>
+
+</body>
+
+</html>
